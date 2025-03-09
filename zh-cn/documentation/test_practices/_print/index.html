@@ -653,8 +653,8 @@ identified, it&rsquo;s possible to layer PageObjects on top of bots.</p></div><d
 可以通过模拟预期的结果, 直接使用Selenium来完成此测试的自动化.
 可以通过记录/回放或通过本文档中说明的各种支持的语言来完成此模拟.</p><h3 id=性能测试>性能测试</h3><p>顾名思义, 进行性能测试是为了衡量应用程序的性能.</p><p>性能测试主要有两种类型:</p><h4 id=负载测试>负载测试</h4><p>进行了负载测试,
 以验证应用程序在各种特定的负载
-(通常是同时连接一定数量的用户) 下的运行状况</p><h4 id=压力测试>压力测试</h4><p>进行压力测试,
-以验证应用程序在压力 (或高于最大支持负载) 下的运行状况.</p><p>通常, 性能测试是通过执行一些Selenium书写的测试来完成的,
+(通常是同时连接一定数量的用户) 下的运行状况</p><blockquote><p>For example, <strong><em>Testing that the site can handle numerous orders/users at once.</em></strong></p></blockquote><h4 id=压力测试>压力测试</h4><p>进行压力测试,
+以验证应用程序在压力 (或高于最大支持负载) 下的运行状况.</p><blockquote><p>For example, <strong><em>Testing that your ecommerce site can handle Black Friday</em></strong></p></blockquote><p>通常, 性能测试是通过执行一些Selenium书写的测试来完成的,
 这些测试模拟了不同的用户
 使用Web应用程序的特定功能
 并检索了一些有意义的指标.</p><p>通常, 这是由其他检索指标的工具完成的.<br><strong><em>JMeter</em></strong> 就是这样一种工具.</p><p>对于Web应用程序,
@@ -662,7 +662,7 @@ identified, it&rsquo;s possible to layer PageObjects on top of bots.</p></div><d
 吞吐量、 延迟、数据丢失、单个组件加载时间&mldr;</p><p>注意1：所有浏览器的开发人员工具
 均具有“性能”标签 (可通过按F12进行访问)</p><p>注2：这属于 <strong><em>非功能测试</em></strong> 的类型,
 因为它通常是按系统而不是按功能/特征进行测量.</p><h3 id=回归测试>回归测试</h3><p>此测试通常在修改, 修复或添加功能之后进行.</p><p>为了确保所做的更改没有破坏任何现有功能,
-将再次执行一些已经执行过的测试.</p><p>重新执行的测试集可以是全部或部分,
+将再次执行一些已经执行过的测试.</p><blockquote><p>For example, <strong><em>Testing that your new search bar doesn&rsquo;t break the other buttons on the menu</em></strong></p></blockquote><p>重新执行的测试集可以是全部或部分,
 并且可以包括几种不同的类型,
 具体取决于具体的应用程序和开发团队.</p><h3 id=测试驱动开发-tdd>测试驱动开发 (TDD)</h3><p>TDD本身不是一种测试类型,
 而是一种迭代开发方法,
