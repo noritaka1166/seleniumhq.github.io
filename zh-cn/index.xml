@@ -88,7 +88,7 @@ RC服务器捆绑了Selenium Core并将其自动注入浏览器. 当您的测试
 应熟练掌握build tool以安装支持java的Selenium库
 Maven 具体的依赖位于项目中的 pom.xml 文件:
 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.seleniumhq.selenium&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;selenium-java&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${selenium.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; View full example on GitHub Gradle 具体的依赖位于项目中的 build.gradle 文件中的 testImplementation:
-testImplementation &amp;#39;org.seleniumhq.selenium:selenium-java:4.30.0&amp;#39; testImplementation &amp;#39;org.junit.jupiter:junit-jupiter-engine:5.12.1&amp;#39; View full example on GitHub 该库所支持的Python版本最低版本可以在 支持的Python版本 章节中找到 PyPi
+testImplementation &amp;#39;org.seleniumhq.selenium:selenium-java:4.31.0&amp;#39; testImplementation &amp;#39;org.junit.jupiter:junit-jupiter-engine:5.12.1&amp;#39; View full example on GitHub 该库所支持的Python版本最低版本可以在 支持的Python版本 章节中找到 PyPi
 这里提供了几种不同的方式来安装 Selenium .
 Pip pip install selenium 下载 此外你可以从这里下载 PyPI Built Distribution (selenium-x.x.x.-py3-none-any.whl) 并通过: pip 文件安装:
 pip install selenium-x.x.x.-py3-none-any.whl 在项目中使用 为了在项目中使用它,需要将它添加到 requirements.txt 文件中:</description></item><item><title>测试类型</title><link>https://www.selenium.dev/zh-cn/documentation/test_practices/testing_types/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.selenium.dev/zh-cn/documentation/test_practices/testing_types/</guid><description>验收测试 进行这种类型的测试以确定功能或系统是否满足客户的期望和要求. 这种测试通常涉及客户的合作或反馈, 是一种验证活动, 可以用于回答以下问题：
