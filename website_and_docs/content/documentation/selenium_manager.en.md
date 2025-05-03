@@ -234,8 +234,11 @@ INFO    Browser path: C:\Users\boni\.cache\selenium\chrome\win64\117.0.5938.22\c
 {{% tab header="CSharp" %}}
 {{< gh-codeblock path="examples/dotnet/SeleniumDocs/SeleniumManager/UsageTest.cs#L10-L18" >}}
 {{< /tab >}}
-{{< tab header="Ruby" >}}
-{{< badge-code >}}
+{{% tab header="Ruby" %}}
+**Previously**
+{{< gh-codeblock path="examples/ruby/spec/selenium_manager/usage.rb#L5-L10" >}}
+**Selenium Manager**
+{{< gh-codeblock path="examples/ruby/spec/selenium_manager/usage.rb#L12-L16" >}}
 {{< /tab >}}
 {{< tab header="JavaScript" >}}
 {{< badge-code >}}
