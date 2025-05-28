@@ -26,6 +26,7 @@ describe('Service Test', function () {
     let browserPath = paths.browserPath;
 
     options.setChromeBinaryPath(browserPath)
+    options.addArguments('--enable-logging', '--v=1');
 
     let service = new Chrome.ServiceBuilder(driverPath)
 
