@@ -39,6 +39,11 @@ namespace SeleniumDocs
             if (browserVersion != null)
             {
                 options.BrowserVersion = browserVersion;
+                string userDataDir = System.IO.Path.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetRandomFileName());
+                System.IO.Directory.CreateDirectory(userDataDir);
+                options.AddArgument($"--user-data-dir={userDataDir}");
+                options.AddArgument("--no-sandbox");
+                options.AddArgument("--disable-dev-shm-usage");
             }
             driver = new ChromeDriver(options);
         }
