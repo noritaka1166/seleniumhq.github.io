@@ -67,7 +67,7 @@
 
 <div id="codeModal_{{ $uniqueId }}" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050;">
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; border-radius: 8px; max-width: 90%; max-height: 90%; overflow: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-        <div style="padding: 20px; border-bottom: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
+        <div style="position: sticky; top: 0; z-index: 10; background: white; box-shadow: 0 2px 2px rgba(0,0,0,0.1); padding: 10px 15px; border-bottom: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center; height: 50px;">
             <h5 style="margin: 0;">{{ $path }}</h5>
             <div>
                 <button onclick="copyCode('{{ $uniqueId }}', event)" style="margin-right: 10px; padding: 5px 10px; border: 1px solid #007bff; background: #007bff; color: white; border-radius: 4px; cursor: pointer;">
@@ -98,7 +98,7 @@ window.closeCodeModal = window.closeCodeModal || function(id) {
 window.copyCode = window.copyCode || function(id, event) {
     const codeElement = document.getElementById('codeContent_' + id);
     const code = codeElement.textContent;
-    
+
     if (navigator.clipboard) {
         navigator.clipboard.writeText(code).then(() => {
             const btn = event.target;
@@ -119,7 +119,7 @@ window.copyCode = window.copyCode || function(id, event) {
         textArea.select();
         document.execCommand('copy');
         document.body.removeChild(textArea);
-        
+
         const btn = event.target;
         const originalText = btn.textContent;
         btn.textContent = 'Copied!';
