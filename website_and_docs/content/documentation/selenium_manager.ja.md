@@ -144,7 +144,7 @@ In addition to the configuration keys specified in the table before, there are s
 ### se-config.toml Example
 {{< tabpane text=true >}}
 {{< tab header="se-config.toml" >}}
-{{< gh-codeblock path="examples/python/tests/selenium_manager/example_se-config.toml#L1-L21" >}}
+{{< gh-codeblock path="/examples/python/tests/selenium_manager/example_se-config.toml#L1-L21" >}}
 {{< /tab >}}
 {{< /tabpane >}}
 
@@ -221,30 +221,30 @@ INFO    Browser path: C:\Users\boni\.cache\selenium\chrome\win64\117.0.5938.22\c
 {{< tabpane text=true >}}
 {{% tab header="Java" %}}
 **Previously**
-{{< gh-codeblock path="examples/java/src/test/java/dev/selenium/selenium_manager/SeleniumManagerUsageDemo.java#L12-L17" >}}
+{{< gh-codeblock path="/examples/java/src/test/java/dev/selenium/selenium_manager/SeleniumManagerUsageDemo.java#L12-L17" >}}
 **Selenium Manager**
-{{< gh-codeblock path="examples/java/src/test/java/dev/selenium/selenium_manager/SeleniumManagerUsageDemo.java#L20-L24" >}}
+{{< gh-codeblock path="/examples/java/src/test/java/dev/selenium/selenium_manager/SeleniumManagerUsageDemo.java#L20-L24" >}}
 {{< /tab >}}
 {{% tab header="Python" %}}
 **Previously**
-{{< gh-codeblock path="examples/python/tests/selenium_manager/usage.py#L5-L8" >}}
+{{< gh-codeblock path="/examples/python/tests/selenium_manager/usage.py#L5-L8" >}}
 **Selenium Manager**
-{{< gh-codeblock path="examples/python/tests/selenium_manager/usage.py#L10-L12" >}}
+{{< gh-codeblock path="/examples/python/tests/selenium_manager/usage.py#L10-L12" >}}
 {{< /tab >}}
 {{% tab header="CSharp" %}}
-{{< gh-codeblock path="examples/dotnet/SeleniumDocs/SeleniumManager/UsageTest.cs#L10-L18" >}}
+{{< gh-codeblock path="/examples/dotnet/SeleniumDocs/SeleniumManager/UsageTest.cs#L10-L18" >}}
 {{< /tab >}}
 {{% tab header="Ruby" %}}
 **Previously**
-{{< gh-codeblock path="examples/ruby/spec/selenium_manager/usage.rb#L5-L10" >}}
+{{< gh-codeblock path="/examples/ruby/spec/selenium_manager/usage.rb#L5-L10" >}}
 **Selenium Manager**
-{{< gh-codeblock path="examples/ruby/spec/selenium_manager/usage.rb#L12-L16" >}}
+{{< gh-codeblock path="/examples/ruby/spec/selenium_manager/usage.rb#L12-L16" >}}
 {{< /tab >}}
 {{% tab header="JavaScript" %}}
 **Previously**
-{{< gh-codeblock path="examples/javascript/test/selenium_manager/usage.spec.js#L16-L31" >}}
+{{< gh-codeblock path="/examples/javascript/test/selenium_manager/usage.spec.js#L16-L31" >}}
 **Selenium Manager**
-{{< gh-codeblock path="examples/javascript/test/selenium_manager/usage.spec.js#L6-L14" >}}
+{{< gh-codeblock path="/examples/javascript/test/selenium_manager/usage.spec.js#L6-L14" >}}
 {{< /tab >}}
 {{< tab header="Kotlin" >}}
 {{< badge-code >}}
