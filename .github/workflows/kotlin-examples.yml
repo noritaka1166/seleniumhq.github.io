@@ -51,8 +51,8 @@ jobs:
     - name: Run tests
       uses: nick-invision/retry@v3.0.2
       with:
-        timeout_minutes: 20
-        max_attempts: 3
+        timeout_minutes: 40
+        max_attempts: 2
         command: |
           cd examples/kotlin
           mvn -B test
