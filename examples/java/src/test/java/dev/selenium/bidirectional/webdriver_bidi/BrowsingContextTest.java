@@ -287,7 +287,6 @@ class BrowsingContextTest extends BaseTest {
     }
 
     @Test
-    @Disabled("Supported by Firefox Nightly 124")
     void textSetViewportWithDevicePixelRatio() {
         BrowsingContext browsingContext = new BrowsingContext(driver, driver.getWindowHandle());
         driver.get("https://www.selenium.dev/selenium/web/formPage.html");
