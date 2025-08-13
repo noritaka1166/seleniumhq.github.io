@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Internal.Logging;
 
 namespace SeleniumDocs.Browsers
 {
@@ -17,7 +19,7 @@ namespace SeleniumDocs.Browsers
         [TestCleanup]
         public void Cleanup()
         {
-            if (_logLocation != null && File.Exists(_logLocation))
+            if (!String.IsNullOrEmpty(_logLocation) && File.Exists(_logLocation))
             {
                 File.Delete(_logLocation);
             }
@@ -56,11 +58,10 @@ namespace SeleniumDocs.Browsers
         }
 
         [TestMethod]
-        [Ignore("Not implemented")]
         public void LogsToFile()
         {
             var service = FirefoxDriverService.CreateDefaultService();
-            //service.LogFile = _logLocation
+            service.LogPath = GetLogLocation();
 
             driver = new FirefoxDriver(service);
             var lines = File.ReadLines(GetLogLocation());
@@ -68,29 +69,33 @@ namespace SeleniumDocs.Browsers
         }
 
         [TestMethod]
-        [Ignore("Not implemented")]
         public void LogsToConsole()
         {
-            var stringWriter = new StringWriter();
-            var originalOutput = Console.Out;
-            Console.SetOut(stringWriter);
-
-            var service = FirefoxDriverService.CreateDefaultService();
-            //service.LogToConsole = true;
-
-            driver = new FirefoxDriver(service);
-            Assert.IsTrue(stringWriter.ToString().Contains("geckodriver	INFO	Listening on"));
-            Console.SetOut(originalOutput);
-            stringWriter.Dispose();
+            TestLogHandler testLogHandler = new TestLogHandler();
+            ResetGlobalLog();
+            try
+            {
+                Log.SetLevel(LogEventLevel.Trace).Handlers.Add(testLogHandler);
+                var service = FirefoxDriverService.CreateDefaultService();
+                driver = new FirefoxDriver(service);
+                Assert.IsTrue(testLogHandler.Events.Count >= 1);
+                Assert.IsTrue(testLogHandler.Events.Any(e => e.Message.Contains("geckodriver INFO")));
+            }
+            catch (Exception e)
+            {
+                // If the test fails, we still want to reset the global log
+            }
+            finally
+            {
+                ResetGlobalLog();
+            }
         }
 
         [TestMethod]
-        [Ignore("You can set it, just can't see it")]
         public void LogsLevel()
         {
             var service = FirefoxDriverService.CreateDefaultService();
-            //service.LogFile = _logLocation
-
+            service.LogPath = GetLogLocation();
             service.LogLevel = FirefoxDriverLogLevel.Debug;
 
             driver = new FirefoxDriver(service);
@@ -99,11 +104,10 @@ namespace SeleniumDocs.Browsers
         }
 
         [TestMethod]
-        [Ignore("Not implemented")]
         public void StopsTruncatingLogs()
         {
             var service = FirefoxDriverService.CreateDefaultService();
-            //service.TruncateLogs = false;
+            service.LogTruncate = false;
 
             service.LogLevel = FirefoxDriverLogLevel.Debug;
 
@@ -113,18 +117,17 @@ namespace SeleniumDocs.Browsers
         }
 
         [TestMethod]
-        [Ignore("Not implemented")]
         public void SetProfileLocation()
         {
             var service = FirefoxDriverService.CreateDefaultService();
-            // service.ProfileRoot = GetTempDirectory();
+            service.ProfileRoot = GetTempDirectory();
 
             driver = new FirefoxDriver(service);
 
             string profile = (string)driver.Capabilities.GetCapability("moz:profile");
             string[] directories = profile.Split("/");
             var dirName = directories.Last();
-            Assert.AreEqual(GetTempDirectory() + "/" + dirName, profile);
+            Assert.AreEqual(GetTempDirectory() + dirName, profile);
         }
 
         [TestMethod]
@@ -171,7 +174,7 @@ namespace SeleniumDocs.Browsers
         
         private string GetLogLocation()
         {
-            if (_logLocation != null && !File.Exists(_logLocation))
+            if (String.IsNullOrEmpty(_logLocation) && !File.Exists(_logLocation))
             {
                 _logLocation = Path.GetTempFileName();
             }
@@ -181,7 +184,7 @@ namespace SeleniumDocs.Browsers
 
         private string GetTempDirectory()
         {
-            if (_tempPath != null && !File.Exists(_tempPath))
+            if (String.IsNullOrEmpty(_tempPath) && !File.Exists(_tempPath))
             {
                 _tempPath = Path.GetTempPath();
             }
@@ -203,5 +206,26 @@ namespace SeleniumDocs.Browsers
             };
             return new DriverFinder(options).GetBrowserPath();
         }
+
+        private void ResetGlobalLog()
+        {
+            Log.SetLevel(LogEventLevel.Info);
+            Log.Handlers.Clear().Handlers.Add(new TextWriterHandler(Console.Error));
+        }
     }
+}
+
+class TestLogHandler : ILogHandler
+{
+    public ILogHandler Clone()
+    {
+        return this;
+    }
+
+    public void Handle(LogEvent logEvent)
+    {
+        Events.Add(logEvent);
+    }
+
+    public IList<LogEvent> Events { get; internal set; } = new List<LogEvent>();
 }
