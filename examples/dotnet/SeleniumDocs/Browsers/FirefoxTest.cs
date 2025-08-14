@@ -81,10 +81,6 @@ namespace SeleniumDocs.Browsers
                 Assert.IsTrue(testLogHandler.Events.Count >= 1);
                 Assert.IsTrue(testLogHandler.Events.Any(e => e.Message.Contains("geckodriver INFO")));
             }
-            catch (Exception e)
-            {
-                // If the test fails, we still want to reset the global log
-            }
             finally
             {
                 ResetGlobalLog();
