@@ -126,6 +126,8 @@ The following table summarizes all the supported arguments supported by Selenium
 |`--offline`|`offline = true`|`SE_OFFLINE=true`|Offline mode (i.e., disabling network requests and downloads)|
 |`--force-browser-download`|`force-browser-download = true`|`SE_FORCE_BROWSER_DOWNLOAD=true`|Force to download browser, e.g., when a browser is already installed in the system, but you want Selenium Manager to download and use it|
 |`--avoid-browser-download`|`avoid-browser-download = true`|`SE_AVOID_BROWSER_DOWNLOAD=true`|Avoid to download browser, e.g., when a browser is supposed to be downloaded by Selenium Manager, but you prefer to avoid it|
+|`--skip-driver-in-path`|`skip-driver-in-path = true`|`SE_SKIP_DRIVER_IN_PATH=true`|Not using drivers found in the `PATH`|
+|`--skip-browser-in-path`|`skip-browser-in-path = true`|`SE_SKIP_BROWSER_IN_PATH=true`|Not using browsers found in the `PATH`|
 |`--debug`|`debug = true`|`SE_DEBUG=true`|Display `DEBUG` messages|
 |`--trace`|`trace = true`|`SE_TRACE=true`|Display `TRACE` messages|
 |`--cache-path <CACHE_PATH>`|`cache-path="CACHE_PATH"`|`SE_CACHE_PATH=CACHE_PATH`|Local folder used to store downloaded assets (drivers and browsers), local metadata, and configuration file. See next section for details. Default: `~/.cache/selenium`. For Windows paths in the TOML configuration file, double backslashes are required (e.g., `C:\\custom\\cache`).|
@@ -216,7 +218,9 @@ INFO    Driver path: C:\Users\boni\.cache\selenium\chromedriver\win64\117.0.5938
 INFO    Browser path: C:\Users\boni\.cache\selenium\chrome\win64\117.0.5938.22\chrome.exe
 ```
 
-### Implementing Selenium Manager in Your Scripts
+### Using Selenium Manager from the bindings
+
+All Selenium binding languages (Java, JavaScript, Python, .Net, Ruby) use Selenium Manager internally to manage drivers and browsers. The automated management process starts before starting a new Selenium session, i.e., each time a Selenium script instantiates a driver object (e.g., `ChromeDriver`, `FirefoxDriver`, etc.). The following snippets illustrate the difference between the old-fashioned way of manually managing drivers and the built-in automated mechanism provided by Selenium Manager.
 
 {{< tabpane text=true >}}
 {{% tab header="Java" %}}
