@@ -31,7 +31,7 @@ They allow you to programmatically provide credentials or modify the authenticat
 {{< tab header="CSharp" >}}
 {{< /tab >}}
 {{< tab header="Ruby" >}}
-{{< gh-codeblock path="examples/ruby/spec/bidi/network_spec.rb#L7-L11" >}}
+{{< gh-codeblock path="/examples/ruby/spec/bidi/network_spec.rb#L7-L11" >}}
 {{< /tab >}}
 {{< tab header="JavaScript" >}}
 {{< /tab >}}
